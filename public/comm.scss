@@ -1,0 +1,100 @@
+ @charset "utf-8";
+ 
+//那种需要最大容器的样式
+ @mixin u_code_maxbox {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+ }
+ /**
+ * @des 替换calc的属性
+ * @author 尹辉
+ * @date 2019-02-28
+ * @param {$attr}:{css的属性名称},{$val}:{calc的值}
+ * @example @include calc(width,calc(100% - 20px));
+ * @return 无
+ */
+ @mixin calc($attr,$val) {
+   #{$attr}:-moz-$val;
+   #{$attr}:-ms-$val;
+   #{$attr}:-webkic-$val;
+   #{$attr}:-o-$val;
+   #{$attr}:$val;
+  }
+  @mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  
+  @mixin scrollBar {
+    &::-webkit-scrollbar-track-piece {
+      background: #d3dce6;
+    }
+  
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #99a9bf;
+      border-radius: 20px;
+    }
+  }
+  
+  @mixin relative {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @mixin pct($pct) {
+    width: #{$pct};
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  @mixin triangle($width, $height, $color, $direction) {
+    $width: $width/2;
+    $color-border-style: $height solid $color;
+    $transparent-border-style: $width solid transparent;
+    height: 0;
+    width: 0;
+  
+    @if $direction==up {
+      border-bottom: $color-border-style;
+      border-left: $transparent-border-style;
+      border-right: $transparent-border-style;
+    }
+  
+    @else if $direction==right {
+      border-left: $color-border-style;
+      border-top: $transparent-border-style;
+      border-bottom: $transparent-border-style;
+    }
+  
+    @else if $direction==down {
+      border-top: $color-border-style;
+      border-left: $transparent-border-style;
+      border-right: $transparent-border-style;
+    }
+  
+    @else if $direction==left {
+      border-right: $color-border-style;
+      border-top: $transparent-border-style;
+      border-bottom: $transparent-border-style;
+    }
+  }
+  
+//顶部背景颜色
+$HEADER_BG_COLOR:#000000;
+//左边菜单栏背景颜色
+$LEFT_CONTAINER_COLOR:#000000;
+//右边视图背景颜色
+$RIGHT_CONTAINER_COLOR:#CCCCCC;
+$HEADER_HEIGHT:80;
+$LEFT_CONTAINER_WIDTH:180;
